@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A&amp;G – We build your new website first</title>
+<meta name="description" content="A&amp;G finds businesses with outdated websites, builds a better one first, then gets in touch to show it to you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAF5EE; --ink:#2A2521; --muted:#6A5F55; --line:#E6DACB;
+  --accent:#C4441F; --on-accent:#FFFFFF; --brand:#1E4D4A;
+  --stage-a:#F3E6D3; --stage-b:#EBD8BD;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --text:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1C1815; --ink:#F3EBDF; --muted:#BBAE9E; --line:#3A312A;
+    --accent:#F08A62; --on-accent:#1C1815;
+    --stage-a:#2B231D; --stage-b:#241D18;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1C1815; --ink:#F3EBDF; --muted:#BBAE9E; --line:#3A312A;
+  --accent:#F08A62; --on-accent:#1C1815;
+  --stage-a:#2B231D; --stage-b:#241D18;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+
+/* header */
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.25rem 0}
+.mark{font-family:var(--display);font-weight:800;font-size:1.7rem;letter-spacing:-.04em;color:var(--ink);text-decoration:none}
+.mark span{color:var(--accent)}
+.nav{display:flex;align-items:center;gap:1.75rem}
+.nav a.plain{color:var(--ink);text-decoration:none;font-weight:500}
+.nav a.plain:hover{text-decoration:underline;text-underline-offset:.3em}
+@media(max-width:640px){.nav a.plain{display:none}}
+
+/* buttons */
+.btn{display:inline-block;font:600 1rem/1 var(--text);padding:.95rem 1.4rem;border-radius:999px;background:var(--accent);color:var(--on-accent);text-decoration:none;border:0;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.link{color:var(--ink);text-underline-offset:.25em;font-weight:500}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:2rem 3rem;align-items:end;padding:clamp(2rem,6vw,4.5rem) 0 2.25rem}
+@media(max-width:820px){.hero{grid-template-columns:1fr}}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(2.5rem,6.6vw,5.25rem);line-height:.98;letter-spacing:-.035em;margin:0;max-width:16ch}
+.hero-side p{margin:0 0 1.4rem;color:var(--muted);max-width:44ch}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem}
+
+/* before / after */
+.stage{border-radius:22px;padding:clamp(.9rem,2.6vw,2rem);background:linear-gradient(140deg,var(--stage-a),var(--stage-b))}
+.stage-labels{display:flex;justify-content:space-between;margin:0 .35rem .8rem;font:600 .9rem/1 var(--text);color:var(--ink)}
+.stage-labels span{display:inline-flex;align-items:center;gap:.5rem}
+.stage-labels i{width:.65rem;height:.65rem;border-radius:50%}
+.dot-old{background:#8A8567}
+.dot-new{background:var(--accent)}
+.window{border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 30px 60px -28px rgba(70,38,12,.45),0 2px 8px rgba(70,38,12,.14)}
+.chrome{display:flex;align-items:center;gap:.8rem;padding:.6rem .9rem;background:#F4EFE8;border-bottom:1px solid #E4DBCF}
+.chrome .lights{display:flex;gap:.4rem}
+.chrome .lights i{width:.7rem;height:.7rem;border-radius:50%}
+.chrome .lights i:nth-child(1){background:#E7A08C}
+.chrome .lights i:nth-child(2){background:#E9CB78}
+.chrome .lights i:nth-child(3){background:#A3C7A6}
+.chrome .url{flex:1;max-width:22rem;margin-inline:auto;text-align:center;font:500 .8rem/1 var(--text);color:#6A5F55;background:#fff;border-radius:999px;padding:.4rem .8rem}
+.chrome .lights{width:3.4rem}
+.chrome .spacer{width:3.4rem}
+@media(max-width:640px){.chrome .spacer,.chrome .lights{width:2.6rem}}
+
+.compare{position:relative;--pos:50%;aspect-ratio:16/10;container-type:inline-size;user-select:none;-webkit-user-select:none;overflow:hidden}
+@media(max-width:640px){.compare{aspect-ratio:4/3}}
+.layer{position:absolute;inset:0;display:flex;flex-direction:column;overflow:hidden}
+.layer.old{clip-path:inset(0 calc(100% - var(--pos)) 0 0);z-index:1}
+
+.old{background:#CFC9AE;font-family:"Times New Roman",Times,serif;color:#1c1c1c}
+.old-banner{background:#008080;color:#FFFF66;text-align:center;font-weight:700;font-size:4.6cqw;padding:2.2cqw 1cqw;border-bottom:.5cqw solid #004d4d}
+.old-nav{background:#E9E5CF;text-align:center;font-size:2.4cqw;padding:1.3cqw;color:#0000EE;border-bottom:.3cqw solid #8a8567;text-decoration:underline}
+.old-body{flex:1;display:flex;flex-direction:column;gap:1.8cqw;padding:2.6cqw 4cqw;font-size:2.5cqw;line-height:1.35}
+.old-body p{margin:0}
+.old-body .old-warn{color:#CC0000;font-weight:700;font-size:3cqw;text-align:center}
+.old-body .old-counter{align-self:center;margin-top:auto;font-family:"Courier New",monospace;background:#000;color:#33FF33;padding:.8cqw 2cqw;font-size:2.2cqw}
+
+.new{background:#FFFDF9;color:#2B2118;font-family:var(--text)}
+.new-nav{display:flex;justify-content:space-between;align-items:center;padding:2.6cqw 5cqw}
+.new-logo{font-family:var(--display);font-weight:700;font-size:3.4cqw;color:#A8431F}
+.new-links{display:flex;gap:3cqw;font-size:2.2cqw;font-weight:500;color:#5A4A3B}
+.new-hero{flex:1;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:3cqw;padding:0 5cqw}
+.new-copy h3{font-family:var(--display);font-weight:700;font-size:6.2cqw;line-height:1;letter-spacing:-.03em;margin:0 0 2cqw}
+.new-copy p{font-size:2.5cqw;line-height:1.4;margin:0 0 3cqw;color:#5A4A3B}
+.new-btn{display:inline-block;background:#C4441F;color:#fff;font-weight:600;font-size:2.3cqw;padding:1.6cqw 3cqw;border-radius:999px}
+.new-art{width:84%;height:auto;justify-self:center}
+.new-chips{display:flex;gap:1.6cqw;padding:0 5cqw 3.4cqw}
+.new-chips span{flex:1;text-align:center;font-size:2.1cqw;font-weight:500;color:#5A4A3B;background:#F8EBD9;border-radius:1.4cqw;padding:1.6cqw 1cqw}
+
+.compare input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;z-index:4;-webkit-appearance:none;appearance:none;background:transparent;touch-action:pan-y}
+.handle{position:absolute;top:0;bottom:0;left:var(--pos);width:0;z-index:3;pointer-events:none}
+.handle::before{content:"";position:absolute;top:0;bottom:0;left:-1px;width:2px;background:#fff;box-shadow:0 0 0 1px rgba(30,20,10,.18),0 0 12px rgba(30,20,10,.25)}
+.knob{position:absolute;top:50%;left:0;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;background:#fff;color:var(--brand);display:grid;place-items:center;box-shadow:0 0 0 6px rgba(255,255,255,.35),0 6px 16px rgba(30,20,10,.35);transition:transform .15s}
+.compare:active .knob{transform:scale(1.08)}
+.compare input:focus-visible ~ .handle .knob{outline:3px solid var(--accent);outline-offset:4px}
+.hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:3;display:flex;align-items:center;gap:.5rem;background:var(--brand);color:#fff;font:600 .85rem/1 var(--text);padding:.6rem .95rem;border-radius:999px;pointer-events:none;transition:opacity .3s;white-space:nowrap}
+.compare.used .hint{opacity:0}
+.caption{margin:1rem 0 0;font-size:.95rem;color:var(--muted)}
+
+/* sections */
+.statement{padding:clamp(3rem,8vw,6rem) 0 clamp(2.5rem,6vw,4.5rem)}
+.statement p{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(1.6rem,3.6vw,2.6rem);line-height:1.15;letter-spacing:-.02em;max-width:34ch}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4vw,3rem);line-height:1.05;letter-spacing:-.03em;margin:0 0 1rem}
+.section-intro{margin:0;color:var(--muted);max-width:40ch}
+
+.split{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:2rem 4rem;padding:clamp(3rem,7vw,5.5rem) 0;border-top:1px solid var(--line)}
+@media(max-width:820px){.split{grid-template-columns:1fr}}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{display:grid;grid-template-columns:3.5rem 1fr;column-gap:1rem;padding:1.4rem 0;border-top:1px solid var(--line)}
+.steps li:first-child{border-top:0;padding-top:0}
+.steps li::before{counter-increment:s;content:counter(s);grid-row:1 / span 2;font-family:var(--display);font-weight:700;font-size:2.2rem;line-height:1;color:var(--accent)}
+.steps h3,.steps p{grid-column:2}
+.steps h3{margin:0 0 .3rem;font-family:var(--display);font-size:1.35rem;letter-spacing:-.01em}
+.steps p{margin:0;color:var(--muted);max-width:52ch}
+
+.feat{padding:clamp(3rem,7vw,5.5rem) 0;border-top:1px solid var(--line)}
+.rows{list-style:none;margin:2rem 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:4rem}
+@media(max-width:700px){.rows{grid-template-columns:1fr}}
+.rows li{padding:1.3rem 0 1.6rem;border-top:1px solid var(--line)}
+.rows h3{margin:0 0 .3rem;font-family:var(--display);font-size:1.3rem;letter-spacing:-.01em}
+.rows p{margin:0;color:var(--muted);max-width:46ch}
+
+/* contact */
+.contact{background:var(--brand);color:#fff;padding:clamp(3rem,8vw,6rem) 0}
+.contact-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:2.5rem 4rem}
+@media(max-width:820px){.contact-grid{grid-template-columns:1fr}}
+.contact h2{color:#fff;max-width:14ch}
+.contact p{margin:0 0 1rem;color:#F1E6D6;max-width:44ch}
+.contact a{color:#fff}
+.contact :focus-visible{outline-color:#fff}
+.field{display:block;margin-bottom:1rem}
+.field span{display:block;font-weight:600;font-size:.95rem;margin-bottom:.35rem}
+.field small{display:block;font-weight:400;color:#F1E6D6}
+.field input,.field textarea{width:100%;font:inherit;padding:.8rem .9rem;border-radius:10px;border:2px solid transparent;background:#FFFDF9;color:#2A2521}
+.field textarea{min-height:7.5rem;resize:vertical}
+.field ::placeholder{color:#7A6E62}
+.contact .btn{background:#F6E7D0;color:var(--brand)}
+.note{margin:.9rem 0 0;font-size:.9rem;color:#F1E6D6}
+
+footer{padding:2rem 0;color:var(--muted);font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem 1rem}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body id="top">
+
+<header class="wrap top">
+  <a class="mark" href="#top" aria-label="A&amp;G home">A<span>&amp;</span>G</a>
+  <nav class="nav" aria-label="Main">
+    <a class="plain" href="#how">How it works</a>
+    <a class="plain" href="#get">What you get</a>
+    <a class="btn" href="#contact">Get in touch</a>
+  </nav>
+</header>
+
+<main>
+  <section class="wrap hero" aria-labelledby="h1">
+    <h1 id="h1">We build your new website first. Then we show you.</h1>
+    <div class="hero-side">
+      <p>A&amp;G looks for businesses and people whose websites are dated, slow or hard to use. We design a better one with your own content, then get in touch and walk you through it.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#contact">Talk to us</a>
+        <a class="link" href="#how">See how it works</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" aria-label="Before and after example">
+    <div class="stage">
+      <div class="stage-labels" aria-hidden="true">
+        <span><i class="dot-old"></i>Before</span>
+        <span>After<i class="dot-new"></i></span>
+      </div>
+      <div class="window">
+        <div class="chrome" aria-hidden="true">
+          <div class="lights"><i></i><i></i><i></i></div>
+          <div class="url">yourbusiness.com</div>
+          <div class="spacer"></div>
+        </div>
+        <div class="compare" id="compare">
+          <div class="layer new" aria-hidden="true">
+            <div class="new-nav"><span class="new-logo">Sunrise</span><span class="new-links"><span>Menu</span><span>Visit</span><span>Contact</span></span></div>
+            <div class="new-hero">
+              <div class="new-copy">
+                <h3>Fresh bread, every morning.</h3>
+                <p>Baked at 4 a.m., on the shelf by 7.</p>
+                <span class="new-btn">Order for pick-up</span>
+              </div>
+              <svg class="new-art" viewBox="0 0 200 200" aria-hidden="true">
+                <circle cx="100" cy="100" r="96" fill="#F6DFBC"/>
+                <ellipse cx="100" cy="150" rx="58" ry="8" fill="#5A3212" opacity=".12"/>
+                <ellipse cx="100" cy="112" rx="68" ry="46" fill="#B96F2A"/>
+                <ellipse cx="100" cy="104" rx="62" ry="38" fill="#D9923F"/>
+                <path d="M72 100 L88 86 M96 96 L112 82 M120 100 L136 86" stroke="#F6DFBC" stroke-width="6" stroke-linecap="round" fill="none"/>
+              </svg>
+            </div>
+            <div class="new-chips"><span>Open Tuesday to Sunday</span><span>Pick-up until noon</span><span>Cakes on order</span></div>
+          </div>
+
+          <div class="layer old" aria-hidden="true">
+            <div class="old-banner">~*~ Welcome to Sunrise Bakery ~*~</div>
+            <div class="old-nav">Home | About us | Products | Guestbook | Links</div>
+            <div class="old-body">
+              <p class="old-warn">UNDER CONSTRUCTION!!</p>
+              <p>We bake bread and cakes since 1987. Please call for prices. Opening times: see other page. Best viewed with Internet Explorer at 800x600.</p>
+              <p class="old-counter">You are visitor number 004512</p>
+            </div>
+          </div>
+
+          <input id="slider" type="range" min="0" max="100" step="0.5" value="50" aria-label="Compare the old and the new website">
+          <div class="handle" aria-hidden="true">
+            <div class="knob">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 3.5 12 9 18"/><path d="M15 6l5.5 6L15 18"/></svg>
+            </div>
+          </div>
+          <div class="hint" aria-hidden="true">Drag to compare</div>
+        </div>
+      </div>
+    </div>
+    <p class="caption">Same business, same content, a different website. The bakery is made up.</p>
+  </section>
+
+  <section class="wrap statement" aria-label="Who we build for">
+    <p>For small businesses, freelancers, clubs and anyone whose website no longer shows what they do best.</p>
+  </section>
+
+  <section class="wrap split" id="how" aria-labelledby="how-h">
+    <div>
+      <h2 id="how-h">How it works</h2>
+      <p class="section-intro">Four steps. The first two happen before you hear from us.</p>
+    </div>
+    <ol class="steps">
+      <li>
+        <h3>We find you</h3>
+        <p>We look for businesses and people whose current website is dated, slow or difficult to use.</p>
+      </li>
+      <li>
+        <h3>We build it</h3>
+        <p>We design and build a new version with the content from your current site, before we contact you.</p>
+      </li>
+      <li>
+        <h3>We get in touch</h3>
+        <p>You get a short message with a link to your new website, ready to open and click through.</p>
+      </li>
+      <li>
+        <h3>You decide</h3>
+        <p>If you like it, we talk about putting it live. If not, you keep the link and we leave it there.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="wrap feat" id="get" aria-labelledby="get-h">
+    <h2 id="get-h">What you get</h2>
+    <p class="section-intro">A website that does its basic job well.</p>
+    <ul class="rows">
+      <li>
+        <h3>Works on every screen</h3>
+        <p>One design that adapts to phones, tablets and computers, so nothing is cut off or too small to read.</p>
+      </li>
+      <li>
+        <h3>Loads quickly</h3>
+        <p>Light pages without heavy extras, so visitors don't leave while they wait.</p>
+      </li>
+      <li>
+        <h3>Easy to find on Google</h3>
+        <p>Clear page titles and descriptions, so search engines understand what you do.</p>
+      </li>
+      <li>
+        <h3>A clear way to reach you</h3>
+        <p>Phone number, address, opening hours and a contact option, placed where people look for them.</p>
+      </li>
+      <li>
+        <h3>Your own words and photos</h3>
+        <p>We start from what your current site already says and tidy it up instead of replacing it.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap contact-grid">
+      <div>
+        <h2 id="contact-h">Want to see what your site could look like?</h2>
+        <p>Send us your current website address and a few words about your business. Know someone who needs a new site? Send theirs instead.</p>
+        <p>Or write to us directly at <a class="mail-text" href="mailto:hello@example.com">hello@example.com</a></p>
+      </div>
+      <div>
+        <label class="field"><span>Your name</span><input type="text" id="f-name" autocomplete="name"></label>
+        <label class="field"><span>Website address <small>Yours, or one you think we should look at</small></span><input type="text" id="f-site" inputmode="url" autocomplete="url" placeholder="www.example.com"></label>
+        <label class="field"><span>Message</span><textarea id="f-msg"></textarea></label>
+        <a class="btn" id="mail" href="mailto:hello@example.com">Open email draft</a>
+        <p class="note">This opens your email app with the details filled in.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 A&amp;G</span>
+    <a class="mail-text" href="mailto:hello@example.com">hello@example.com</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Replace with the real A&G email address
+  var CONTACT_EMAIL = "hello@example.com";
+
+  /* contact: build the mailto link from the form */
+  var name = document.getElementById("f-name");
+  var site = document.getElementById("f-site");
+  var msg  = document.getElementById("f-msg");
+  var mail = document.getElementById("mail");
+  function updateMail(){
+    var body = "Name: " + name.value + "\nWebsite: " + site.value + "\n\n" + msg.value;
+    mail.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent("Website enquiry") + "&body=" + encodeURIComponent(body);
+  }
+  [name, site, msg].forEach(function(el){ el.addEventListener("input", updateMail); });
+  updateMail();
+  Array.prototype.forEach.call(document.querySelectorAll(".mail-text"), function(a){
+    a.textContent = CONTACT_EMAIL;
+    a.href = "mailto:" + CONTACT_EMAIL;
+  });
+
+  /* before / after slider */
+  var frame = document.getElementById("compare");
+  var input = document.getElementById("slider");
+  var touched = false;
+  function use(){ touched = true; frame.classList.add("used"); }
+  function setPos(v){
+    frame.style.setProperty("--pos", v + "%");
+    input.setAttribute("aria-valuetext", Math.round(v) + "% old design shown");
+  }
+  input.addEventListener("pointerdown", use);
+  input.addEventListener("keydown", use);
+  input.addEventListener("input", function(){ use(); setPos(parseFloat(input.value)); });
+
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce){
+    setPos(50);
+  } else {
+    // one intro moment: the old site slides away to show the new one
+    var from = 100, to = 48, dur = 1500, start = null;
+    input.value = from; setPos(from);
+    setTimeout(function(){
+      function step(t){
+        if (touched) return;
+        if (start === null) start = t;
+        var p = Math.min((t - start) / dur, 1);
+        var e = 1 - Math.pow(1 - p, 3);
+        var v = from + (to - from) * e;
+        input.value = v; setPos(v);
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }, 600);
+  }
+})();
+</script>
+</body>
+</html>
